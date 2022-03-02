@@ -15,57 +15,47 @@ public class CompressCharGroupsArray
 
     private int Compress(char[] chars)
     {
-        int slow = 0, fast = 0, curCharCount = 0;
-
-        while (fast < chars.Length)
+        int slow = 0,fast = 0, currCount = 0;
+        
+        while(fast < chars.Length)
         {
-            if (chars[slow] == chars[fast])
+            if(chars[slow] == chars[fast])
             {
-                curCharCount++;
                 fast++;
+                currCount++;
             }
             else
             {
-                if (curCharCount == 1)
+                if(currCount > 1)
                 {
-                    slow++;
-                }
-                else
-                {
-                    var curCountString = curCharCount.ToString();
+                    var currCountStr = currCount.ToString();
                     int i = 0;
-                    while (i < curCountString.Length)
+                    while(i < currCountStr.Length)
                     {
                         slow++;
-                        chars[slow] = curCountString[i];
+                        chars[slow] = currCountStr[i];
                         i++;
-                    }
-
-                    slow++;
-                    chars[slow] = chars[fast];
+                    }   
                 }
-
-                curCharCount = 0;
+                slow++;
+                chars[slow] = chars[fast];
+                
+                currCount = 0;
             }
-        }
-
-        if (curCharCount == 1)
-        {
-            return slow + 1;
         }
         
-        if (curCharCount != 0)
+        if(currCount > 1)
         {
-            var curCountString = curCharCount.ToString();
+            var currCountStr = currCount.ToString();
             int i = 0;
-            while (i < curCountString.Length)
+            while(i < currCountStr.Length)
             {
                 slow++;
-                chars[slow] = curCountString[i];
+                chars[slow] = currCountStr[i];
                 i++;
-            }
+            }   
         }
-
+        
         return slow + 1;
     }
 }

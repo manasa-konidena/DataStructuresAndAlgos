@@ -9,6 +9,8 @@
 
     <ItemGroup>
       <Compile Remove="Program.cs" />
+      <Compile Remove="StringsAndArrays\CompressCharArray.cs" />
+      <Compile Remove="StringsAndArrays\ValidParanthesis.cs" />
     </ItemGroup>
 
     <ItemGroup>
