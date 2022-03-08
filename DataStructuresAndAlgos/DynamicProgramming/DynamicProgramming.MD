@@ -1,0 +1,7 @@
+| Code                                        | Notes                                                                                                                                                                         |
+|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [BuyAndSellStock](BuyAndSellStock.cs)       | Come up with the mathematical equation on what is the best option at every day with 1 stock in hand and 0 stock in hand. Compute the values for each day and keep the maximum |
+| [GeneratePascalTriangle](PascalTriangle.cs) | Basic dynamic programming - get an equation and implement                                                                                                                     |
+| []()                                        | xxxxx                                                                                                                                                                         |
+| []()                                        | xxxxx                                                                                                                                                                         |
+| []()                                        | xxxxx                                                                                                                                                                         |

@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace DataStructuresAndAlgos.DyanamicProgramming;
+namespace DataStructuresAndAlgos.DynamicProgramming;
 
 public class BuyAndSellStock
 {
