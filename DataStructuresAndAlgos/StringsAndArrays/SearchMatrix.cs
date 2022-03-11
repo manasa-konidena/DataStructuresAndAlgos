@@ -8,6 +8,10 @@ public class SearchMatrix
     [Test]
     public void Test_SearchMatrix()
     {
+        var matrix = new int[][] {new int[] {1}, new int[] {3}, new int[] {5}};
+        
+        Assert.IsTrue(SearchMatrixForNumber(matrix, 3));
+        
         var array = new int[] {3, 6, 7, 9, 10, 12};
         var array2 = new int[] {3, 6, 7, 9, 10, 12, 13};
         var array3 = new int[] {3, 6};
@@ -45,33 +49,24 @@ public class SearchMatrix
 
     private int SearchForArray(int begin, int end, int[][] matrix, int target)
     {
-        
-        if (begin == end)
-        {
-            if (matrix[begin][matrix[0].Length - 1] >= target && matrix[begin][0] <= target) return begin;
-            return -1;
-        }
+        if (begin > end) return -1;
 
-        var left = SearchForArray(begin, begin + (end - begin) / 2, matrix, target);
-        var right = SearchForArray(begin + (end - begin) / 2 + 1, end, matrix, target);
-        return left >= 0 ? left : right;
+        var mid = (begin + end) / 2;
+        if (target > matrix[mid][matrix[0].Length - 1]) return SearchForArray(mid + 1, end, matrix, target);
+        if (target < matrix[mid][0]) return SearchForArray(begin, mid - 1, matrix, target);
+        if (matrix[mid][matrix[0].Length - 1] >= target && matrix[mid][0] <= target) return mid;
+        return -1;
     }
 
     private int BinarySearchInArray(int begin, int end, int[] rowArray, int target)
     {
-    {
-        if (begin == end)
-        {
-            return rowArray[begin] == target ?  begin : -1;
-        }
+        if (begin > end) return -1;
 
-        if (target > rowArray[end]) return -1;
-        if (target < rowArray[begin]) return -1;
-
-        var left = BinarySearchInArray(begin, begin + (end - begin) / 2, rowArray, target);
-        var right = BinarySearchInArray(begin + (end - begin) / 2 + 1, end , rowArray, target);
-
-        return left >= 0 ? left : right;
+        var mid = (begin + end) / 2;
+        if (target > rowArray[mid]) return BinarySearchInArray(mid + 1, end, rowArray, target);
+        if (target < rowArray[mid]) return BinarySearchInArray(begin, mid - 1, rowArray, target);
+        if (target == rowArray[mid]) return mid;
+        return -1;
 
     }
 
