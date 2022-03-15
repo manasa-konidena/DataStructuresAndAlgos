@@ -8,20 +8,20 @@ public class ReverseLinkedList
     [Test]
     public void Test_ReverseLL()
     {
-        var inputLl = Node.ConvertArrayToLinkedList(new int[] {1, 2, 3, 4});
-        var outputLl = Node.ConvertArrayToLinkedList(new int[] {4, 3, 2, 1});
+        var inputLl = ListNode.ConvertArrayToLinkedList(new int[] {1, 2, 3, 4});
+        var outputLl = ListNode.ConvertArrayToLinkedList(new int[] {4, 3, 2, 1});
         
-        Assert.That(Node.PrintLinkedList(outputLl), Is.EqualTo(Node.PrintLinkedList((ReverseLl(inputLl)))));
+        Assert.That(ListNode.PrintLinkedList(outputLl), Is.EqualTo(ListNode.PrintLinkedList((ReverseLl(inputLl)))));
     }
     
-    private Node? ReverseLl(Node? node)
+    private ListNode? ReverseLl(ListNode? node)
     {
-        Node? prev = null, curr = node, nex = null;
+        ListNode? prev = null, curr = node, nex = null;
 
         while (curr != null)
         {
-            nex = curr.Next;
-            curr.Next = prev;
+            nex = curr.next;
+            curr.next = prev;
             prev = curr;
             curr = nex;
         }

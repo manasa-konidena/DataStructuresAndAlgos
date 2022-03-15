@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace DataStructuresAndAlgos.LinkedLists;
 
-public class Node
+public class ListNode
 {
     [Test]
     public void Test_LLImplementation()
@@ -14,46 +14,46 @@ public class Node
         Console.WriteLine(PrintLinkedList(newLl));
     }
 
-    public Node? Next { get; set; }
-    public int Val { get; set; }
+    public ListNode? next { get; set; }
+    public int val { get; set; }
 
-    public Node()
+    public ListNode()
     {
     }
 
-    public Node(int val = 0, Node? next = null)
+    public ListNode(int val = 0, ListNode? next = null)
     {
-        Next = next;
-        Val = val;
+        this.next = next;
+        this.val = val;
     }
 
-    public static string PrintLinkedList(Node? node)
+    public static string PrintLinkedList(ListNode? node)
     {
         if (node == null) return "No data in the linked list";
         
         var stringBuilder = new StringBuilder();
 
-        while (node.Next != null)
+        while (node.next != null)
         {
-            stringBuilder.Append($"{node.Val}->");
-            node = node.Next;
+            stringBuilder.Append($"{node.val}->");
+            node = node.next;
         }
 
-        stringBuilder.Append(node.Val);
+        stringBuilder.Append(node.val);
 
         return stringBuilder.ToString();
     }
 
-    public static Node? ConvertArrayToLinkedList(int[] inputArray)
+    public static ListNode? ConvertArrayToLinkedList(int[] inputArray)
     {
         if (inputArray.Length == 0) return null;
-        var node = new Node(val: inputArray[0]);
+        var node = new ListNode(val: inputArray[0]);
         var returnNode = node;
 
         for (int i=1;i<inputArray.Length; i++)
         {
-            node.Next = new Node(inputArray[i]);
-            node = node.Next;
+            node.next = new ListNode(inputArray[i]);
+            node = node.next;
         }
 
         return returnNode;
