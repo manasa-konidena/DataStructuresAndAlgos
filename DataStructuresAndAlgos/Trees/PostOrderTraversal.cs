@@ -10,8 +10,8 @@ public class PostOrderTraversal
         
     }
 
-    private void PostOrder()
+    private List<int> PostOrder()
     {
-        
+        return null;
     }
 }

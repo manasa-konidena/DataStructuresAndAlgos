@@ -25,8 +25,8 @@ public class PreOrderTraversal
         {
             var inStack = stack.Pop();
             output.Add(inStack.val);
-            if (inStack.left != null) stack.Push(inStack.left);
             if (inStack.right != null) stack.Push(inStack.right);
+            if (inStack.left != null) stack.Push(inStack.left);
         }
 
         return output;
