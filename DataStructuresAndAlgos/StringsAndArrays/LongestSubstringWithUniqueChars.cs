@@ -13,7 +13,13 @@ public class LongestSubstringWithUniqueChars
         Assert.That(LongestSubstring("dvdf"), Is.EqualTo(3));
     }
 
-
+    /// <summary>
+    /// Sliding window approach
+    /// either add the next character to the window or move the start to the last occurence of the next character
+    /// keep a maximum to return at the end
+    /// </summary>
+    /// <param name="s"></param>
+    /// <returns></returns>
     private int LongestSubstring(string s)
     {
         int maxLen = 0;

@@ -17,6 +17,13 @@ public class TwoSum
             TwoSumToTarget(new int[] { 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 7, 1, 1, 1, 1, 1}, 11));
     }
 
+    /// <summary>
+    /// Create a hashmap of int, int -> target and index
+    /// Go through the nums array
+    /// Find num in the hashmap
+    /// If found, return the indices [num index, the value from hashmap]
+    /// If not, put that target - num  and the indexes
+    /// </summary>
     private int[] TwoSumToTarget(int[] nums, int target)
     {
         Dictionary<int, int> targetToIndex = new Dictionary<int, int>();

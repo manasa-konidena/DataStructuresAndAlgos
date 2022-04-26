@@ -11,6 +11,18 @@ public class LongestRepeatingSubstringWithCharReplacement
         Assert.That(LongestRepeatingSubstring("ABAB", 2), Is.EqualTo(4));
     }
 
+    /// <summary>
+    /// Sliding window approach
+    /// start with start and end at 0
+    /// as you go along, up the count of the character in an int array of 26 length
+    /// update the maxOccurences of any character
+    /// if the window size - maxOccurence is less than k, we have exhausted our flips and need to move window ahead
+    /// when moving window ahead, move start and decrement the count of start number
+    /// keep track of maxiumum result at the end by calculating window size and comparing with maximum
+    /// </summary>
+    /// <param name="s"></param>
+    /// <param name="k"></param>
+    /// <returns></returns>
     private int LongestRepeatingSubstring(string s, int k)
     {
         if (s.Length == 1) return 1;
@@ -20,7 +32,7 @@ public class LongestRepeatingSubstringWithCharReplacement
         var countOfChars = new int[26];
         
         // Keep a count of maximum number of character occurences
-        int countOfMaxUniques = 0;
+        int countOfMaxOccurrencesPerChar = 0;
         int result = 0;
 
         while (end < s.Length)
@@ -32,10 +44,10 @@ public class LongestRepeatingSubstringWithCharReplacement
             countOfChars[currChar - 'A']++;
 
             // update max occurrences for any char to check for minimum flips needed
-            countOfMaxUniques = Math.Max(countOfMaxUniques, countOfChars[currChar - 'A']);
+            countOfMaxOccurrencesPerChar = Math.Max(countOfMaxOccurrencesPerChar, countOfChars[currChar - 'A']);
 
             // If the number of flips is greater than k, this window is not possible
-            if (end - start + 1 - countOfMaxUniques > k)
+            if (end - start + 1 - countOfMaxOccurrencesPerChar > k)
             {
                 // If moving window ahead, adjust thw occurrences in window
                 countOfChars[s[start] - 'A']--;

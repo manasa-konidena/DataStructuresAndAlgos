@@ -13,6 +13,14 @@ public class ProductOfArrayExceptSelf
         CollectionAssert.AreEquivalent(output, new int[] {24, 12, 8, 6});
     }
 
+    // Revision attempt
+    // Foe each element, get the product of all the lefts
+    // Get the product of all the rights in an array
+    // Result is the product of both the numbers at the index from the two arrays above
+    
+    
+    
+    
     /// <summary>
     /// Compute the product of all lefts and rights to each element in two separate arrays
     /// the resultant array is the product of left and rights

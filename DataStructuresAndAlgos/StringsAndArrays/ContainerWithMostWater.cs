@@ -18,6 +18,16 @@ public class ContainerWithMostWater
         Assert.That(result2, Is.EqualTo(ContainerMaxVol(input2)));
     }
 
+    
+    /// <summary>
+    /// two pointers at both ends
+    /// At every point, move the smaller height inward as that has the most opportunity to increment volume
+    /// keep a maximum by calculating volume at the current stage
+    /// return at the end
+    /// </summary>
+    /// <param name="height"></param>
+    /// <returns></returns>
+    
     private int ContainerMaxVol(int[] height)
     {
         int i = 0, j = height.Length - 1;

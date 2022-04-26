@@ -12,6 +12,11 @@ public class ContainsDuplicate
         
     }
 
+    /// <summary>
+    /// Add to a hashset and return if unable to add any
+    /// </summary>
+    /// <param name="nums"></param>
+    /// <returns></returns>
     private bool DoesContainDupe(int[] nums)
     {
         HashSet<int> set = new HashSet<int>();
