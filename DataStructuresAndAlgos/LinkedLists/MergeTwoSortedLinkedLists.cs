@@ -12,9 +12,47 @@ public class MergeTwoSortedLinkedLists
 
         var result = ListNode.ConvertArrayToLinkedList(new[] {1, 1, 2, 3, 4, 4});
         
-        Assert.That(ListNode.PrintLinkedList(result), Is.EqualTo(ListNode.PrintLinkedList(MergeTwoSortedHeads(n1, n2))));
+        Assert.That(ListNode.PrintLinkedList(result), Is.EqualTo(ListNode.PrintLinkedList(MergeTwoSortedListsRevision(n1, n2))));
     }
 
+    private ListNode MergeTwoSortedListsRevision(ListNode n1, ListNode n2)
+    {
+        ListNode res = new ListNode();
+        ListNode tempRes = res;
+
+        while (n1 != null && n2 != null)
+        {
+            if (n1.val <= n2.val)
+            {
+                res.next = n1;
+                n1 = n1.next;
+            }
+            else
+            {
+                res.next = n2;
+                n2 = n2.next;
+            }
+            
+            res = res.next;
+        }
+
+        while (n1 != null)
+        {
+            res.next = n1;
+            n1 = n1.next;
+            res = res.next;
+        }
+
+        while (n2 != null)
+        {
+            res.next = n2;
+            n2 = n2.next;
+            res = res.next;
+        }
+
+        return tempRes.next;
+    }
+    
     private ListNode MergeTwoSortedHeads(ListNode n1, ListNode n2)
     {
         ListNode result = new ListNode();

@@ -1,4 +1,7 @@
+using System.Runtime.CompilerServices;
+using System.Xml.Schema;
 using NUnit.Framework;
+using NUnit.Framework.Constraints;
 
 namespace DataStructuresAndAlgos.StringsAndArrays;
 
@@ -12,12 +15,51 @@ public class ThreeSumReturnTriplets
 
         var resultWithOne = ThreeSum(input);
         var resultWithNew = ThreeSumUsingTwoSum(input);
-
+        var resultWithRevision = ThreeSumRevision(input);
+        
         var input2 = new int[] {1, 2, -2, -1};
         var resultWithOne2 = ThreeSum(input2);
         var resultWithNew2 = ThreeSumUsingTwoSum(input2);
     }
-    
+
+    public IList<IList<int>>  ThreeSumRevision(int[] nums)
+    {
+        Array.Sort(nums);
+
+        var result = new HashSet<IList<int>>(new CustomListComparer());
+
+        if (nums.Length < 3) return new List<IList<int>>();
+
+        int i = 0, j = 1, k = nums.Length - 1;
+
+        while (i < nums.Length - 2)
+        {
+            while (j < k)
+            {
+                if (nums[i] + nums[j] + nums[k] == 0)
+                {
+                    result.Add(new List<int>{nums[i], nums[j], nums[k]});
+                    j++;
+                    k--;
+                }
+                else if(nums[i] + nums[j] + nums[k] > 0)
+                {
+                    k--;
+                }
+                else
+                {
+                    j++;
+                }
+            }
+
+            i++;
+            j = i + 1;
+            k = nums.Length - 1;
+        }
+
+        return result.ToList();
+    }
+
     public IList<IList<int>> ThreeSum(int[] nums)
     {
         HashSet<IList<int>> resultSet = new HashSet<IList<int>>(new CustomListComparer());
@@ -54,6 +96,7 @@ public class ThreeSumReturnTriplets
             }
         }
 
+        
         return resultSet.ToList();
 
     }
