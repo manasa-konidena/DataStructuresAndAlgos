@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Collections.Specialized;
 
 namespace DataStructuresAndAlgos.StringsAndArrays;
 
@@ -9,7 +10,6 @@ public class FirstNonDuplicateCharacter
     {
         var input = "itwasagrimdaytoday";
         Assert.That(FirstUniqChar(input), Is.EqualTo(2));
-        
 
     }
     

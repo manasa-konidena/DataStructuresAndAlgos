@@ -1,4 +1,6 @@
-using NUnit.Framework;
+
+
+using System.Collections.Generic;
 
 namespace DataStructuresAndAlgos.StringsAndArrays;
 
@@ -7,7 +9,7 @@ public class ValidParanthesis
 {
     public bool IsValid(string s) {
         
-    Stack stackForlefts = new Stack<>();
+    var stackForlefts = new Stack<char>();
     HashSet<char> lefts = new HashSet<char>{'{', '(', '['};
     HashSet<char> rights = new HashSet<char>{'}', ')', ']'};
     Dictionary<char, char> mapParanthesis = new Dictionary<char, char>
