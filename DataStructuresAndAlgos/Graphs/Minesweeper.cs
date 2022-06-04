@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using NUnit.Framework;
 
-namespace DataStructuresAndAlgos.Misc;
+namespace DataStructuresAndAlgos.Graphs;
 
 public class Minesweeper
 {

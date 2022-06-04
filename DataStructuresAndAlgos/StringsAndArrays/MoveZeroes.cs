@@ -13,6 +13,18 @@ public class MoveZeroes
         CollectionAssert.AreEquivalent(input, output);
     }
     
+    /// <summary>
+    /// Take two pointers
+    /// Move the faster one when the element is zero
+    /// When you hit a non zero element, move the element to the slow pointer
+    /// move both pointers and then continue
+    ///
+    /// Essentially, every non zero you encounter, you are placing it in place of an
+    /// earlier found zero
+    /// </summary>
+    /// <param name="nums"></param>
+    /// TC - O(N)
+    /// SC - O(1)
     private void MoveZeroesInArray(int[] nums)
     {
         int slow = 0, fast = 0;

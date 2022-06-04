@@ -34,4 +34,27 @@ public class Anagram
 
         return firstCount.Values.ToHashSet().Count == 1 && firstCount.Values.ToHashSet().First() == 0;
     }
+
+    public bool IsAnagramRevision(string s, string t)
+    {
+        Dictionary<char, int> charDict = new Dictionary<char, int>();
+        
+        if(s.Length != t.Length) return false;
+        
+        for(int i = 0; i < s.Length; i++)
+        {
+            if(charDict.TryGetValue(s[i], out int occurrs)) charDict[s[i]] += 1;
+            else charDict.Add(s[i], 1);
+            
+            if(charDict.TryGetValue(t[i], out int tOccurrs)) charDict[t[i]] -= 1;
+            else charDict.Add(t[i], -1);
+        }
+        
+        foreach(var count in charDict.Values)
+        {
+            if(count != 0) return false;
+        }
+        
+        return true;
+    }
 }

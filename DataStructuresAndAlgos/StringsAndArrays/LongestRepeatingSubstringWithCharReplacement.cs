@@ -16,7 +16,7 @@ public class LongestRepeatingSubstringWithCharReplacement
     /// start with start and end at 0
     /// as you go along, up the count of the character in an int array of 26 length
     /// update the maxOccurences of any character
-    /// if the window size - maxOccurence is less than k, we have exhausted our flips and need to move window ahead
+    /// if the window size - maxOccurence is greater than k, we have exhausted our flips and need to move window ahead
     /// when moving window ahead, move start and decrement the count of start number
     /// keep track of maxiumum result at the end by calculating window size and comparing with maximum
     /// </summary>

@@ -12,23 +12,34 @@ public class SearchInRotatedArray
         var output2 = SearchInRotatedSortedArray(1, new int[] {5, 1,3});
     }
 
-    private int SearchInRotatedSortedArray(int searchFor, int[] nums)
+    /// <summary>
+    /// CHeck if the left half is sorted, if yes check that target is in the range and search there
+    /// if not, check if the target is in between mid and end, if yes search there
+    /// if not, search in left
+    /// </summary>
+    /// <param name="target"></param>
+    /// <param name="nums"></param>
+    /// <returns></returns>
+    private int SearchInRotatedSortedArray(int target, int[] nums)
     {
-        return SearchInRotatedRecursive(searchFor, nums, 0, nums.Length - 1);
-    }
+        int start = 0, end = nums.Length - 1;
+        
+        while(start <= end)
+        {
+            int mid = start + (end - start) / 2;
+            if(target == nums[mid]) return mid;
+            if(nums[mid] >= nums[start])
+            {
+                if(target < nums[mid] && target >= nums[start]) end = mid - 1;
+                else start = mid + 1;
+            }
+            else
+            {
+                if(target > nums[mid] && target <= nums[end]) start = mid + 1;
+                else end = mid - 1;
+            }
+        }
     
-    private int SearchInRotatedRecursive(int target, int[] nums, int start, int end)
-    {
-        if (start == end) return target == nums[start] ? start : -1;
-
-        int mid = (start + end) / 2;
-        
-        // if start > mid and target > mid => check in start - mid
-        // if start < mid
-        
-
-        if (target >= nums[start] && target <= nums[mid] && nums[start] <= nums[mid])
-            return SearchInRotatedRecursive(target, nums, start, mid);
-        else return SearchInRotatedRecursive(target, nums, mid + 1, end);
+        return -1;
     }
 }
